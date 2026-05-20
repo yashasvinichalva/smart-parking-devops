@@ -11,7 +11,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat 'python -m pip install -r requirements.txt'
             }
         }
 
@@ -38,6 +38,16 @@ docker run --rm -v "%cd%:/usr/src" sonarsource/sonar-scanner-cli ^
                 bat 'docker rm -f smart-parking-container || exit 0'
                 bat 'docker run -d -p 5000:5000 --name smart-parking-container smart-parking-app'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+
+        failure {
+            echo 'Pipeline failed. Check logs.'
         }
     }
 }
