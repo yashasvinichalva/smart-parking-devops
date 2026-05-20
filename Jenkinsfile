@@ -8,7 +8,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/yashasvinichalva/smart-parking-devops.git'
             }
         }
-    }
 
         stage('Install Dependencies') {
             steps {
@@ -25,11 +24,11 @@ pipeline {
         stage('Run SonarQube Scan') {
             steps {
                 bat '''
-                docker run --rm -v "%cd%:/usr/src" sonarsource/sonar-scanner-cli ^
-                -Dsonar.projectKey=smart-parking-devops ^
-                -Dsonar.sources=. ^
-                -Dsonar.host.url=http://host.docker.internal:9000 ^
-                -Dsonar.token=sqp_553637bbcfd3333d19ace0d13ec58903b6c5da45
+docker run --rm -v "%cd%:/usr/src" sonarsource/sonar-scanner-cli ^
+-Dsonar.projectKey=smart-parking-devops ^
+-Dsonar.sources=. ^
+-Dsonar.host.url=http://host.docker.internal:9000 ^
+-Dsonar.token=sqp_553637bbcfd3333d19ace0d13ec58903b6c5da45
                 '''
             }
         }
