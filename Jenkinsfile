@@ -5,9 +5,11 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/yashasvinichalva/smart-parking-devops.git'
+                git branch: 'main', url: 'https://github.com/yashasvinichalva/smart-parking-devops.git'
             }
         }
+    }
+}
 
         stage('Install Dependencies') {
             steps {
