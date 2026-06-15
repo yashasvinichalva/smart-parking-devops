@@ -25,10 +25,10 @@ pipeline {
         stage('Run SonarQube Scan') {
             steps {
                 bat '''
-docker run --rm -v "%cd%:/usr/src" sonarsource/sonar-scanner-cli ^
+docker run --rm --network bridge -v "%cd%:/usr/src" sonarsource/sonar-scanner-cli ^
 -Dsonar.projectKey=smart-parking-devops ^
 -Dsonar.sources=. ^
--Dsonar.host.url=http://localhost:9000 ^
+-Dsonar.host.url=http://sonarqube:9000 ^
 -Dsonar.token=sqp_553637bbcfd3333d19ace0d13ec58903b6c5da45
                 '''
             }
