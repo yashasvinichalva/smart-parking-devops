@@ -29,7 +29,7 @@ docker run --rm -v "%cd%:/usr/src" sonarsource/sonar-scanner-cli ^
 -Dsonar.projectKey=smart-parking-devops ^
 -Dsonar.sources=. ^
 -Dsonar.host.url=http://172.17.0.2:9000 ^
--Dsonar.token=squ_9d90919b1accecaf3dbddf73a5347127f9b49b48
+-Dsonar.login=squ_9d90919b1accecaf3dbddf73a5347127f9b49b48
                 '''
             }
         }
